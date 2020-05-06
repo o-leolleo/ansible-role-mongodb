@@ -1,0 +1,58 @@
+---
+- name: add mongodb key file
+  apt_key:
+    url: https://www.mongodb.org/static/pgp/server-4.2.asc
+    state: present
+  become: yes
+
+- name: add mongodb repository
+  apt_repository:
+    repo: "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse"
+    state: present
+    filename: mongodb-org-4.2
+    update_cache: yes
+  become: yes
+
+- name: install mongodb 4.2.5 packages
+  apt:
+    pkg:
+      - mongodb-org=4.2.5
+      - mongodb-org-server=4.2.5
+      - mongodb-org-shell=4.2.5
+      - mongodb-org-mongos=4.2.5
+      - mongodb-org-tools=4.2.5
+  become: yes
+
+- name: hold mongodb packages in the version installed
+  dpkg_selections:
+    name: '{{ item }}'
+    selection: hold
+  with_items:
+    - mongodb-org
+    - mongodb-org-server
+    - mongodb-org-shell
+    - mongodb-org-mongos
+    - mongodb-org-tools
+  become: yes
+
+- name: setup mongod configuration
+  copy:
+    src: files/mongod.conf
+    dest: /etc/mongod.conf
+    owner: root
+    group: root
+    mode:  '0644'
+  become: yes
+
+- name: adjusts tcp keepalive time, according to https://docs.mongodb.com/manual/faq/diagnostics/#adjusting-the-tcp-keepalive-value
+  sysctl:
+    name: net.ipv4.tcp_keepalive_time
+    value: '120'
+  become: yes
+
+- name: ensure mongodb has started up
+  systemd:
+    name: mongod
+    state: started
+    enabled: yes
+  become: yes

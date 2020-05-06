@@ -1,0 +1,13 @@
+---
+sudo: required
+language: python
+services:
+  - docker
+before_install:
+  - sudo apt-get -qq update
+install:
+    - virtualenv --python=$(which python3) envmolecule
+    - source envmolecule/bin/activate
+    - pip install -r requirements.txt
+script:
+  - molecule test
