@@ -9,8 +9,7 @@ lint: |
 platforms:
   - name: Ubuntu
     image: leolleocompo/ubuntu:18.04
-    # command: /sbin/init
-    privileged: True
+    pre_build_image: true
 provisioner:
   name: ansible
 verifier:

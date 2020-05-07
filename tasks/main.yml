@@ -48,11 +48,21 @@
   sysctl:
     name: net.ipv4.tcp_keepalive_time
     value: '120'
+  tags:
+    - notest
+  become: yes
+
+- name: ensure path /data/db exists
+  file:
+    path: /data/db
+    state: directory
   become: yes
 
 - name: ensure mongodb has started up
-  systemd:
+  service:
     name: mongod
     state: started
     enabled: yes
+  tags:
+    - notest
   become: yes

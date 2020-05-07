@@ -4,6 +4,27 @@
 - name: Verify
   hosts: all
   tasks:
-  - name: Example assertion
-    assert:
-      that: true
+    - name: runs mongod in background
+      shell:
+        cmd: mongod &
+
+    - name: check output for server status
+      shell:
+        cmd: "mongo --quiet --eval 'db.runCommand({ serverStatus: 1 }).ok'"
+      ignore_errors: yes
+      register: status_output
+
+    - assert:
+        that:
+          - status_output.rc == 0
+          - status_output.stdout == '1'
+
+    - name: register mongod version
+      shell:
+        cmd: mongod --version | head -n1 | cut -d' ' -f3
+      ignore_errors: true
+      register: mongod_version
+
+    - assert:
+        that:
+          - mongod_version.stdout == 'v4.2.5'
