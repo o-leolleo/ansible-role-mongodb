@@ -41,7 +41,7 @@ galaxy_info:
   platforms:
       - name: Ubuntu
         versions:
-          - '18.04'
+          - 18.04
 
   galaxy_tags:
     - database
