@@ -4,27 +4,29 @@
 - name: Verify
   hosts: all
   tasks:
-    - name: runs mongod in background
+    - name: runs mongod in background # noqa 301
       shell:
         cmd: mongod &
 
-    - name: check output for server status
+    - name: evaluates server status # noqa 301
       shell:
         cmd: "mongo --quiet --eval 'db.runCommand({ serverStatus: 1 }).ok'"
       ignore_errors: yes
       register: status_output
 
-    - assert:
+    - name: server runs ok
+      assert:
         that:
           - status_output.rc == 0
           - status_output.stdout == '1'
 
-    - name: register mongod version
+    - name: register mongod version # noqa 301
       shell:
         cmd: mongod --version | head -n1 | cut -d' ' -f3
       ignore_errors: true
       register: mongod_version
 
-    - assert:
+    - name: the correct mongod version is installed
+      assert:
         that:
           - mongod_version.stdout == 'v4.2.5'
