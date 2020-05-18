@@ -1,22 +1,24 @@
-MongoDB [![Build Status](https://travis-ci.com/leolleocomp/mongodb.svg?branch=master)](https://travis-ci.com/leolleocomp/mongodb)
+Ansible Role: MongoDB [![Build Status](https://travis-ci.com/leolleocomp/mongodb.svg?branch=master)](https://travis-ci.com/leolleocomp/mongodb)
 =========
 
 Role para setup de instância única do [MongoDB server 4.2](https://docs.mongodb.com/manual/). Atualizações para _replica sets_ e outras _features_ virão no futuro.
 
-Requisitos
+Plataformas
 ------------
+- Ubuntu 18.04
 
-TODO
+Dependências
+------------
+Nenhuma.
+
 
 Variáveis do Role
 --------------
+Nenhuma.
 
-TODO
-
-Example Playbook
+Playbook Exemplo
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
     - hosts: servers
       roles:
