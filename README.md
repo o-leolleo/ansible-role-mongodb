@@ -27,7 +27,6 @@ Nenhuma.
 Playbook Exemplo
 ----------------
 
-
     - hosts: servers
       roles:
          - leolleocomp.mongodb
