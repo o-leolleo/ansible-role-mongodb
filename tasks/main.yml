@@ -15,7 +15,7 @@
 
 - name: install mongodb 4.2.5 packages
   apt:
-pkg:
+    pkg:
       - mongodb-org=4.2.5
       - mongodb-org-server=4.2.5
       - mongodb-org-shell=4.2.5
