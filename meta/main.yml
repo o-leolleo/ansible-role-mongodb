@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: mongodb
   author: Leonardo Cavalcante do Prado
   description: Full Stack Developer
   company: Sysvale Softgroup Ltda
