@@ -9,7 +9,7 @@ Veja em outras linguagens
 Descrição
 ------------
 
-Role para setup de instância única do [MongoDB server 4.2](https://docs.mongodb.com/manual/). Atualizações para _replica sets_ e outras _features_ virão no futuro.
+Role para instalação do [MongoDB server 4.2](https://docs.mongodb.com/manual/).
 
 Plataformas
 ------------
@@ -22,14 +22,26 @@ Nenhuma.
 
 Variáveis do Role
 --------------
-Nenhuma.
+
+O role possui apenas uma variável, mostrada abaixo junto ao seu valor padrão:
+
+    mongodb_configuration_template_file_path: templates/mongod.conf.j2
+
+Ela permite especificar customizar a configuração da instância do MongoDB de acordo com suas necessidades.
 
 Playbook Exemplo
 ----------------
 
+    # uso padrão
     - hosts: servers
       roles:
          - leolleocomp.mongodb
+
+    # utilizando uma configuração customizada
+    - hosts: servers
+      roles:
+        - role: leolleocomp.mongodb
+          mongodb_configuration_template_file_path: ./templates/mongod-with-nice-tricks.conf.j2
 
 License
 -------
