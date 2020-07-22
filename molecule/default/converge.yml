@@ -4,4 +4,4 @@
   tasks:
     - name: "Include mongodb"
       include_role:
-        name: "mongodb"
+        name: "ansible-role-mongodb"
