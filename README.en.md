@@ -8,7 +8,7 @@ See in other languages
 Description
 ------------
 
-Role for the setup of a single instance of [MongoDB server 4.2](https://docs.mongodb.com/manual/). Updates for the support of replica sets and other features are intended to come in the future.
+Role for the installation of [MongoDB server 4.2](https://docs.mongodb.com/manual/).
 
 Platforms
 ------------
@@ -23,15 +23,25 @@ None.
 Role variables
 --------------
 
-None.
+The role has only one variable, shown below along with its default value:
 
+    mongodb_configuration_template_file_path: templates/mongod.conf.j2
+
+It allows the tailoring of the MongoDB instance according to your needs.
 
 Example Playbook
 ----------------
 
+    # default usage
     - hosts: servers
       roles:
          - leolleocomp.mongodb
+
+    # using a different configuration
+    - hosts: servers
+      roles:
+        - role: leolleocomp.mongodb
+          mongodb_configuration_template_file_path: ./templates/mongod-with-nice-tricks.conf.j2
 
 License
 -------
