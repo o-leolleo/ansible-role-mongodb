@@ -36,8 +36,8 @@
   become: yes
 
 - name: setup mongod configuration
-  copy:
-    src: files/mongod.conf
+  template:
+    src: '{{ mongodb_configuration_template_file_path }}'
     dest: /etc/mongod.conf
     owner: root
     group: root
