@@ -3,7 +3,7 @@ Ansible Role: MongoDB [![Build Status](https://travis-ci.com/leolleocomp/ansible
 
 See in other languages
 ------------
-- [Portuguese](REAME.md)
+- [Portuguese](README.md)
 
 Description
 ------------
