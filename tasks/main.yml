@@ -47,7 +47,7 @@
 - name: adjusts tcp keepalive time, according to https://docs.mongodb.com/manual/faq/diagnostics/#adjusting-the-tcp-keepalive-value
   sysctl:
     name: net.ipv4.tcp_keepalive_time
-    value: '{{ mongodb_tcp_keep_alive_time|string }}'
+    value: '{{ mongodb_tcp_keep_alive_time }}'
   when: mongodb_tcp_keep_alive_time is defined
   become: yes
 
