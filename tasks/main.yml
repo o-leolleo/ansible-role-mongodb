@@ -50,6 +50,7 @@
     value: '120'
   tags:
     - notest
+  when: mongodb_tcp_keep_alive_time is defined
   become: yes
 
 - name: ensure path /data/db exists

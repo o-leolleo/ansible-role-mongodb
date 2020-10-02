@@ -5,8 +5,8 @@ driver:
   name: docker
 lint: |
   set -e
-  yamllint .
-  ansible-lint
+  yamllint ./defaults ./handlers ./meta ./tasks
+  ansible-lint --exclude .virtualenv
 platforms:
   - name: Ubuntu
     image: leolleocompo/ubuntu:18.04
