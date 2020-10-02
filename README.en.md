@@ -1,9 +1,9 @@
-Ansible Role: MongoDB [![Build Status](https://travis-ci.com/leolleocomp/mongodb.svg?branch=master)](https://travis-ci.com/leolleocomp/mongodb)
+Ansible Role: MongoDB [![Build Status](https://travis-ci.com/leolleocomp/ansible-role-mongodb.svg?branch=master)](https://travis-ci.com/leolleocomp/ansible-role-mongodb)
 =========
 
 See in other languages
 ------------
-- [Portuguese](REAME.md)
+- [Portuguese](README.md)
 
 Description
 ------------
