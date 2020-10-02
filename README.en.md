@@ -23,11 +23,14 @@ None.
 Role variables
 --------------
 
-The role has only one variable, shown below along with its default value:
+The role has the variables shown below along with its default values:
 
+    # It allows the tailoring of the MongoDB instance according to your needs.
     mongodb_configuration_template_file_path: templates/mongod.conf.j2
 
-It allows the tailoring of the MongoDB instance according to your needs.
+    # Adjusts tcp keepalive time, according to https://docs.mongodb.com/manual/faq/diagnostics/#adjusting-the-tcp-keepalive-valuecom/manual/faq/diagnostics/#adjusting-the-tcp-keepalive-value
+    mongodb_tcp_keep_alive_time: null
+
 
 Example Playbook
 ----------------

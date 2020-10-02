@@ -23,11 +23,14 @@ Nenhuma.
 Variáveis do Role
 --------------
 
-O role possui apenas uma variável, mostrada abaixo junto ao seu valor padrão:
+O role possui as variáveis mostradas abaixo, junto ao seus valores padrão:
 
+    # Ela permite especificar customizar a configuração da instância do MongoDB de acordo com suas necessidades.
     mongodb_configuration_template_file_path: templates/mongod.conf.j2
 
-Ela permite especificar customizar a configuração da instância do MongoDB de acordo com suas necessidades.
+    # Ajusta o valor do tcp keepalive de acordo com https://docs.mongodb.com/manual/faq/diagnostics/#adjusting-the-tcp-keepalive-value
+    mongodb_tcp_keep_alive_time: null
+
 
 Playbook Exemplo
 ----------------
