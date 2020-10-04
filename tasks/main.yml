@@ -65,3 +65,18 @@
   tags:
     - notest
   become: yes
+  
+  - name: ensure path /data/db exists
+  file:
+    path: /data/db/config
+    state: files
+  become: yes
+
+- name: ensure mongodb has started up
+  service:
+    name: mongodb
+    state: started
+    enabled: yes
+  tags:
+    - notest
+  become: yes
