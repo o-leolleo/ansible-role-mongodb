@@ -47,7 +47,7 @@ Example Playbook
           mongodb_configuration_template_file_path: ./templates/mongod-with-nice-tricks.conf.j2
 
 
-Contributing
+How to contribute?
 -------
 
 [English version](./CONTRIBUTING.md)

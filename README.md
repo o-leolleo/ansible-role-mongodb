@@ -46,7 +46,7 @@ Playbook Exemplo
         - role: leolleocomp.mongodb
           mongodb_configuration_template_file_path: ./templates/mongod-with-nice-tricks.conf.j2
 
-Contributing
+Como contribuir?
 -------
 
 [English version](./CONTRIBUTING.md)
