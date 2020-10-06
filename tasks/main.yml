@@ -26,7 +26,6 @@
 - name: install mongodb {{ mongodb_release }} packages
   apt:
     pkg:
-      - apt-utils
       - mongodb-org={{ mongodb_release }}
       - mongodb-org-server={{ mongodb_release }}
       - mongodb-org-shell={{ mongodb_release }}
