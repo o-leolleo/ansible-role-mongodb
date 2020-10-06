@@ -1,26 +1,37 @@
 ---
+- name: set mongodb_version
+  set_fact:
+    mongodb_version: "{{ mongodb_minor_release | regex_search('^([0-9]+.[0-9]+).[0-9]+$', '\\1') }}"
+
+- name: install apt-utils
+  apt:
+    pkg:
+      - apt-utils
+  become: yes
+
 - name: add mongodb key file
   apt_key:
-    url: https://www.mongodb.org/static/pgp/server-4.2.asc
+    url: https://www.mongodb.org/static/pgp/server-{{ mongodb_version }}.asc
     state: present
   become: yes
 
 - name: add mongodb repository
   apt_repository:
-    repo: "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse"
+    repo: "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/{{ mongodb_version }} multiverse"
     state: present
-    filename: mongodb-org-4.2
+    filename: mongodb-org-{{ mongodb_version }}
     update_cache: yes
   become: yes
 
-- name: install mongodb 4.2.7 packages
+- name: install mongodb {{ mongodb_minor_release }} packages
   apt:
     pkg:
-      - mongodb-org=4.2.7
-      - mongodb-org-server=4.2.7
-      - mongodb-org-shell=4.2.7
-      - mongodb-org-mongos=4.2.7
-      - mongodb-org-tools=4.2.7
+      - apt-utils
+      - mongodb-org={{ mongodb_minor_release }}
+      - mongodb-org-server={{ mongodb_minor_release }}
+      - mongodb-org-shell={{ mongodb_minor_release }}
+      - mongodb-org-mongos={{ mongodb_minor_release }}
+      - mongodb-org-tools={{ mongodb_minor_release }}
   become: yes
 
 - name: hold mongodb packages in the version installed

@@ -1,3 +1,4 @@
 ---
 mongodb_configuration_template_file_path: templates/mongod.conf.j2
 mongodb_tcp_keep_alive_time: ''
+mongodb_minor_release: '4.2.10'
