@@ -1,7 +1,7 @@
 ---
 - name: set mongodb_version
   set_fact:
-    mongodb_version: "{{ mongodb_minor_release | regex_search('^([0-9]+.[0-9]+).[0-9]+$', '\\1') }}"
+    mongodb_version: "{{ mongodb_release | regex_replace('^([0-9]+.[0-9]+).[0-9]+$', '\\1') }}"
 
 - name: install apt-utils
   apt:
@@ -23,15 +23,15 @@
     update_cache: yes
   become: yes
 
-- name: install mongodb {{ mongodb_minor_release }} packages
+- name: install mongodb {{ mongodb_release }} packages
   apt:
     pkg:
       - apt-utils
-      - mongodb-org={{ mongodb_minor_release }}
-      - mongodb-org-server={{ mongodb_minor_release }}
-      - mongodb-org-shell={{ mongodb_minor_release }}
-      - mongodb-org-mongos={{ mongodb_minor_release }}
-      - mongodb-org-tools={{ mongodb_minor_release }}
+      - mongodb-org={{ mongodb_release }}
+      - mongodb-org-server={{ mongodb_release }}
+      - mongodb-org-shell={{ mongodb_release }}
+      - mongodb-org-mongos={{ mongodb_release }}
+      - mongodb-org-tools={{ mongodb_release }}
   become: yes
 
 - name: hold mongodb packages in the version installed
